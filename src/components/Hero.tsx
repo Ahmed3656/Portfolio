@@ -2,11 +2,11 @@ import React from "react";
 
 import TypeWriter from "./ui/TypeWriter";
 import MagicButton from "./ui/MagicButton";
-import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import { HeroHighlight, Highlight } from "./ui/HeroHighlight";
+import { HeroHighlight } from "./ui/HeroHighlight";
 
 import { FaLocationArrow } from "react-icons/fa6";
+// import { Spotlight } from "./ui/Spotlight";
 
 const Hero = () => {
   return (

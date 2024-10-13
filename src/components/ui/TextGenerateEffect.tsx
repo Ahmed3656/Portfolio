@@ -12,7 +12,7 @@ type Props = {
 
 export const TextGenerateEffect = ({words, className, filter = true, duration = 0.5}: Props) => {
   const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
+  const wordsArray = words.split(" ");
   useEffect(() => {
     animate(
       "span",

@@ -48,7 +48,7 @@ const TypeWriter = ({textContent, className}: Props) => {
 
   }, [isClient]);
 
-  return <span id="dynamic-text"></span>;
+  return <span id="dynamic-text"className={className}></span>;
 };
 
 export default TypeWriter;
