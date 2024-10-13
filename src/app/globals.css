@@ -25,3 +25,13 @@ body {
     text-wrap: balance;
   }
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg) !important;
+}
