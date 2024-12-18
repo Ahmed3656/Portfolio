@@ -10,7 +10,7 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: Card;
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -51,6 +51,7 @@ Card.displayName = "Card";
 type Card = {
   title: string;
   src: string;
+  url: string;
 };
 
 export function FocusCards({ cards }: { cards: Card[] }) {

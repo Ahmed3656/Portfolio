@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { useMotionValueEvent, useScroll, motion, AnimatePresence } from "framer-motion";
+import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { FloatingDock } from "./ui/FloatingDock";
 import {
   IconHome,
