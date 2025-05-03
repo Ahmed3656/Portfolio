@@ -87,7 +87,7 @@ export const Footer = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Have a project in mind? Let's collaborate and create something amazing together.
+              Have a project in mind? Let&apos;s collaborate and create something amazing together.
             </motion.p>
 
             <motion.button

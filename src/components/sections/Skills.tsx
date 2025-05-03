@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BackgroundGradient } from './ui/BackgroundGradient';
+import { BackgroundGradient } from '../ui/BackgroundGradient';
 import { MeSwiper } from '@/components';
 import { mySkills } from '@/constants';
 
