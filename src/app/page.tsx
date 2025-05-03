@@ -1,6 +1,7 @@
 import {FloatingNavbar, Hero, Projects, Skills, useScrollToSection } from '@/components';
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   useScrollToSection;
 
   return (
