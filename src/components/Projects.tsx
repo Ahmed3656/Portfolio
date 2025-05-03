@@ -1,14 +1,12 @@
 import React from 'react';
 
-import { FocusCards } from './ui/FocusCards';
-import { cards } from '@/data';
+import { FocusCards } from '@/components';
+import { projects } from '@/constants';
 
-const Projects = () => {
+export const Projects = () => {
   return (
-    <div>
-      <FocusCards cards={cards} />
+    <div id="projects">
+      <FocusCards cards={projects} />
     </div>
   )
 }
-
-export default Projects

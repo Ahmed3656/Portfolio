@@ -1,5 +1,5 @@
-import React from "react";
-import { clx } from "@/utils/clx";
+import React from 'react';
+import { clx } from '@/utils';
 
 type SpotlightProps = {
   className?: string;

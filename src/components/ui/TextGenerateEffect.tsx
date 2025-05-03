@@ -1,7 +1,8 @@
-"use client";
-import { useEffect } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
-import { clx } from "@/utils/clx";
+'use client';
+
+import { useEffect } from 'react';
+import { motion, stagger, useAnimate } from 'framer-motion';
+import { clx } from '@/utils';
 
 type Props = {
   words: string;
@@ -10,7 +11,7 @@ type Props = {
   duration?: number;
 }
 
-export const TextGenerateEffect = ({words, className, filter = true, duration = 0.5}: Props) => {
+export const TextGenerateEffect = ({ words, className, filter = true, duration = 0.5 }: Props) => {
   const [scope, animate] = useAnimate();
   const wordsArray = words.split(" ");
   useEffect(() => {

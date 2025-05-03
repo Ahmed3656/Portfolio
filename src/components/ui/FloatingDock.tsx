@@ -1,6 +1,6 @@
 'use client'
 
-import { clx } from "@/utils/clx";
+import { clx } from '@/utils';
 import {
   AnimatePresence,
   MotionValue,
@@ -8,9 +8,9 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-} from "framer-motion";
-import Link from "next/link";
-import { useRef, useState } from "react";
+} from 'framer-motion';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
 
 export const FloatingDock = ({
   items,

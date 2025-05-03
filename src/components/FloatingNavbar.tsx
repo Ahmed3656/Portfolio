@@ -1,82 +1,41 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useMotionValueEvent, useScroll, motion } from "framer-motion";
-import { FloatingDock } from "./ui/FloatingDock";
-import {
-  IconHome,
-  IconTools,
-  IconMailSpark,
-  IconFolderCode,
-  IconBriefcase2,
-  IconBrandGithub,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
-
-const links = [
-  {
-    title: "Home",
-    icon: (
-      <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-
-  {
-    title: "Projects",
-    icon: (
-      <IconFolderCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Experience",
-    icon: (
-      <IconBriefcase2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Skills",
-    icon: (
-      <IconTools className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Get in touch",
-    icon: (
-      <IconMailSpark className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "LinkedIn",
-    icon: (
-      <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "GitHub",
-    icon: (
-      <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "https://github.com/Ahmed3656",
-  },
-];
+import { useMotionValueEvent, useScroll, motion } from 'framer-motion';
+import { FloatingDock } from '@/components';
+import { links } from '@/constants';
 
 export function FloatingNavbar({ className }: { className?: string; }) {
   const { scrollYProgress } = useScroll();
 
   const [visible, setVisible] = useState(true);
+  const [mouseAtTop, setMouseAtTop] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const topAreaHeight = 75;
+      const middleAreaWidthPercent = 30;
+      const middleAreaStartX = window.innerWidth * ((100 - middleAreaWidthPercent) / 2) / 100;
+      const middleAreaEndX = window.innerWidth * ((100 + middleAreaWidthPercent) / 2) / 100;
+
+      const isInTopArea = e.clientY <= topAreaHeight;
+      const isInMiddleArea = e.clientX >= middleAreaStartX && e.clientX <= middleAreaEndX;
+
+      setMouseAtTop(isInTopArea && isInMiddleArea);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
       const direction = current - scrollYProgress.getPrevious()!;
 
-      if (scrollYProgress.get() < 0.05) {
+      if (scrollYProgress.get() < 0.05 || mouseAtTop) {
         setVisible(true);
       } else {
         if (direction < 0) {
@@ -87,6 +46,12 @@ export function FloatingNavbar({ className }: { className?: string; }) {
       }
     }
   });
+
+  useEffect(() => {
+    if (mouseAtTop) {
+      setVisible(true);
+    }
+  }, [mouseAtTop]);
 
   const rem = [1, 2, 3];
   const linksSm = links.filter((_, idx)=> !rem.includes(idx));

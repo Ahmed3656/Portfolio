@@ -1,7 +1,8 @@
-"use client";
-import { clx } from "@/utils/clx";
-import React from "react";
-import { motion } from "framer-motion";
+'use client';
+
+import React from 'react';
+import { clx } from '@/utils';
+import { motion } from 'framer-motion';
 
 export const BackgroundGradient = ({
   children,

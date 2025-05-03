@@ -7,7 +7,7 @@ type Props = {
   className?: string;
 };
 
-const TypeWriter = ({textContent, className}: Props) => {
+export const TypeWriter = ({textContent, className}: Props) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -50,5 +50,3 @@ const TypeWriter = ({textContent, className}: Props) => {
 
   return <span id="dynamic-text"className={className}></span>;
 };
-
-export default TypeWriter;

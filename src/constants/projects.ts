@@ -1,6 +1,19 @@
-export const pos = ["Software Engineer.", "FullStack Engineer.", "Frontend Engineer.", "Backend Engineer."]
-
-export const cards = [
+export const projects = [
+  {
+    title: "FOS",
+    src: "/images/project14.png",
+    url: "https://github.com/Ahmedd-Wahdan/OS",
+  },
+  {
+    title: "Clipie",
+    src: "/images/project15.png",
+    url: "https://github.com/clipiexyz",
+  },
+  {
+    title: "Word Frequency Counter",
+    src: "/images/project13.png",
+    url: "#",
+  },
   {
     title: "Portfolio",
     src: "/images/project11.png",
@@ -37,6 +50,11 @@ export const cards = [
     url: "https://ahmed3656.github.io/EliteKicks/index.html",
   },
   {
+    title: "Facebook Management System",
+    src: "/images/project12.png",
+    url: "https://github.com/titoo04/FB-project",
+  },
+  {
     title: "Welcome to Egypt",
     src: "/images/project3.png",
     url: "https://ahmed3656.github.io/Welcome-to-Egypt/",
@@ -52,5 +70,3 @@ export const cards = [
     url: "https://ahmed3656.github.io/Gamer-Spot/",
   },
 ];
-
-export const mySkills = ["TypeScript", "JavaScript", "C++", "Java", "Node.js", "SQL", "MongoDB", "Next.js", "React", "HTML", "CSS", "Tailwind", "Bootstrap"];

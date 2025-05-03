@@ -3,7 +3,7 @@ module.exports = {
     'eslint --fix',
     'git add'
   ],
-  '**/*.{md,json}': [
+  '**/*.(md|json)': [
     'prettier --write',
     'git add'
   ]

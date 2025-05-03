@@ -1,7 +1,8 @@
-"use client";
-import Image from "next/image";
-import React, { useState } from "react";
-import { clx } from "@/utils/clx";
+'use client';
+
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { clx } from '@/utils';
 
 export const Card = React.memo(
   ({

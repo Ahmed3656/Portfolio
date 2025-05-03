@@ -1,4 +1,5 @@
 'use client';
+
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
@@ -6,7 +7,7 @@ import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { clx } from '@/utils/clx';
+import { clx } from '@/utils';
 
 interface SwiperProps {
   items: React.ReactNode[];
@@ -20,7 +21,7 @@ interface SwiperProps {
   };
 }
 
-const MeSwiper: React.FC<SwiperProps> = ({
+export const MeSwiper: React.FC<SwiperProps> = ({
   items,
   className,
   settings = {}
@@ -82,5 +83,3 @@ const MeSwiper: React.FC<SwiperProps> = ({
     </div>
   );
 };
-
-export default MeSwiper;
