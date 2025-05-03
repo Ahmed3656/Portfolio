@@ -1,7 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import React, { useState } from 'react';
+import Image from 'next/image';
+
+import { motion } from 'framer-motion';
 import { clx } from '@/utils';
 
 export const Card = React.memo(
@@ -16,13 +18,17 @@ export const Card = React.memo(
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => (
-    <div
+    <motion.div
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
       className={clx(
         "rounded-xl relative bg-gray-100 dark:bg-neutral-900 border border-gray-300 dark:border-neutral-900 overflow-hidden aspect-[32/15] w-full lg:w-[375px] my-3 transition-all duration-300 ease-out",
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: 0.1 * (index / 3) }}
+      viewport={{ once: true }}
     >
       <Image
         src={card.src}
@@ -43,7 +49,7 @@ export const Card = React.memo(
           <a href={card.url} className="hover:underline hover:text-blue-600" target="_blank">Check it out!</a>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 );
 
