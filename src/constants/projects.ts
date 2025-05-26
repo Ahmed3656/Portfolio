@@ -10,6 +10,11 @@ export const projects = [
     url: "https://github.com/clipiexyz",
   },
   {
+    title: "Map Routing",
+    src: "/images/project3.png",
+    url: "https://github.com/Ahmedd-Wahdan/Map_routing",
+  },
+  {
     title: "Word Frequency Counter",
     src: "/images/project13.png",
     url: "#",
@@ -53,11 +58,6 @@ export const projects = [
     title: "Facebook Management System",
     src: "/images/project12.png",
     url: "https://github.com/titoo04/FB-project",
-  },
-  {
-    title: "Welcome to Egypt",
-    src: "/images/project3.png",
-    url: "https://ahmed3656.github.io/Welcome-to-Egypt/",
   },
   {
     title: "Tech Squad",

@@ -10,7 +10,7 @@ export const Footer = () => {
   const [buttonHovered, setButtonHovered] = useState(false)
 
   return (
-    <footer id="footer" className="relative w-full border-t border-white/10 overflow-hidden bg-black-100 mt-8">
+    <footer id="get-in-touch" className="relative w-full border-t border-white/10 overflow-hidden bg-black-100 mt-8">
       <div className="absolute inset-0">
         <div className="absolute inset-0 overflow-hidden">
           <div className="h-full w-full bg-black-100" style={{ backgroundSize: "100% 100%" }} />
