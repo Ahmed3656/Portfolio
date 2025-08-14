@@ -6,7 +6,7 @@ import { pos } from '@/constants';
 
 export const Hero = () => {
   return (
-    <div id="home" className="pb-20 overflow-hidden">
+    <div id="home" className="overflow-hidden">
       <HeroHighlight containerClassName="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2] center">
         <div className="flex justify-center relative my-20 z-10">
           <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[70vw] flex flex-col items-center justify-center">

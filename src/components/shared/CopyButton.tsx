@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { IconCheck, IconCopy, IconSparkles } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
-interface CopyButtonProps {
+type CopyButtonProps = {
   textToCopy: string;
   isCopied: boolean;
   onCopy: () => void;
-}
+};
 
 export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) => {
   const [sparklePosition, setSparklePosition] = useState({ x: 0, y: 0 });

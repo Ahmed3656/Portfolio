@@ -22,14 +22,14 @@ export const links = [
     href: '#',
   },
   {
-    title: 'Projects',
-    icon: <IconFolderCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-    href: '#projects',
-  },
-  {
     title: 'Skills',
     icon: <IconTools className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
     href: '#skills',
+  },
+  {
+    title: 'Projects',
+    icon: <IconFolderCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: '#projects',
   },
   {
     title: 'Get in touch',

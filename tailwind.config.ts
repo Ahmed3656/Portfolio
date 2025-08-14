@@ -147,6 +147,24 @@ const config = {
             transform: 'translate(calc(-50% - 0.5rem))',
           },
         },
+        floatingSkills: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        blob: {
+          '0%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -50px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -159,6 +177,8 @@ const config = {
         fourth: 'moveHorizontal 40s ease infinite',
         fifth: 'moveInCircle 20s ease infinite',
         scroll: 'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+        'floating-skills': 'floatingSkills 45s linear infinite',
+        blob: 'blob 7s infinite',
       },
     },
   },

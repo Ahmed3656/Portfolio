@@ -1,14 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { IconCheck } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
-import type React from 'react';
-
-interface MessageFormProps {
+type MessageFormProps = {
   onClose: () => void;
-}
+};
 
 export const MessageForm = ({ onClose }: MessageFormProps) => {
   const [message, setMessage] = useState('');

@@ -4,10 +4,10 @@ import React from 'react';
 import { IconX } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
-interface ModalHeaderProps {
+type ModalHeaderProps = {
   title: string;
   onClose: () => void;
-}
+};
 
 export const ModalHeader = ({ title, onClose }: ModalHeaderProps) => {
   return (

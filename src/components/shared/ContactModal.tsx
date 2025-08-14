@@ -1,16 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { ConnectOptions, MessageForm, ModalHeader, TabNavigation } from '@/components';
 
-import type React from 'react';
-
-interface ContactModalProps {
+type ContactModalProps = {
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
 export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [activeTab, setActiveTab] = useState<'message' | 'connect'>('message');

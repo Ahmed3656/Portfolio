@@ -3,10 +3,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface TabNavigationProps {
+type TabNavigationProps = {
   activeTab: string;
   onTabChange: (tab: 'message' | 'connect') => void;
-}
+};
 
 export const TabNavigation = ({ activeTab, onTabChange }: TabNavigationProps) => {
   const tabVariants = {
