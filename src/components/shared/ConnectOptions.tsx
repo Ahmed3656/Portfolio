@@ -1,21 +1,22 @@
 'use client';
 
-import type React from 'react';
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+
 import { CopyButton } from '@/components';
 import { contactOptions } from '@/constants';
 
+import type React from 'react';
+
 export const ConnectOptions = () => {
-  const [copiedOption, setCopiedOption] = useState<string | null>(null)
+  const [copiedOption, setCopiedOption] = useState<string | null>(null);
 
   const handleCopy = (label: string) => {
-    setCopiedOption(label)
+    setCopiedOption(label);
     setTimeout(() => {
-      setCopiedOption(null)
-    }, 2000)
-  }
+      setCopiedOption(null);
+    }, 2000);
+  };
 
   return (
     <motion.div
@@ -66,5 +67,5 @@ export const ConnectOptions = () => {
         Looking forward to connecting with you!
       </motion.div>
     </motion.div>
-  )
-}
+  );
+};

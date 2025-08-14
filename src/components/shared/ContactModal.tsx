@@ -1,35 +1,36 @@
 'use client';
 
-import type React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { ModalHeader, TabNavigation, MessageForm, ConnectOptions } from '@/components';
+import { ConnectOptions, MessageForm, ModalHeader, TabNavigation } from '@/components';
+
+import type React from 'react';
 
 interface ContactModalProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
-  const [activeTab, setActiveTab] = useState<"message" | "connect">("message")
-  const modalRef = useRef<HTMLDivElement>(null)
+  const [activeTab, setActiveTab] = useState<'message' | 'connect'>('message');
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        onClose()
+        onClose();
       }
-    }
+    };
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [isOpen, onClose])
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
 
   const modalVariants = {
     hidden: {
@@ -42,7 +43,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       scale: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 25,
         stiffness: 300,
       },
@@ -55,7 +56,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         duration: 0.2,
       },
     },
-  }
+  };
 
   return (
     <AnimatePresence>
@@ -85,7 +86,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
               <div className="p-4">
                 <AnimatePresence mode="wait">
-                  {activeTab === "message" ? (
+                  {activeTab === 'message' ? (
                     <MessageForm key="message-form" onClose={onClose} />
                   ) : (
                     <ConnectOptions key="connect-options" />
@@ -97,5 +98,5 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};

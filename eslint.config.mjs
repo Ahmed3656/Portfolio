@@ -7,9 +7,19 @@ import tseslint from 'typescript-eslint';
 export default [
   { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   { languageOptions: { globals: { ...globals.node, ...globals.browser } } },
+  {
+    ignores: ['**/node_modules/**', '.next/**', 'out/**', '**/dist/**', '**/build/**', '**/public/**'],
+  },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  {
+    ...pluginReact.configs.flat.recommended,
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
   eslintPluginPrettierRecommended,
   {
     rules: {
@@ -24,7 +34,6 @@ export default [
       'no-return-await': 'off',
       'no-underscore-dangle': 'off',
       'class-methods-use-this': 'off',
-      "indent": ["error", 2],
       'prefer-destructuring': ['error', { object: true, array: false }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },

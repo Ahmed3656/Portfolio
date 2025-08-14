@@ -1,39 +1,39 @@
 'use client';
 
+import { useState } from 'react';
+import { IconCheck } from '@tabler/icons-react';
+import { motion } from 'framer-motion';
+
 import type React from 'react';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { IconCheck } from '@tabler/icons-react';
-
 interface MessageFormProps {
-  onClose: () => void
+  onClose: () => void;
 }
 
 export const MessageForm = ({ onClose }: MessageFormProps) => {
-  const [message, setMessage] = useState("")
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSuccess(true)
+      setIsSubmitting(false);
+      setIsSuccess(true);
 
       setTimeout(() => {
-        setIsSuccess(false)
-        setMessage("")
-        setName("")
-        setEmail("")
-        onClose()
-      }, 2000)
-    }, 1500)
-  }
+        setIsSuccess(false);
+        setMessage('');
+        setName('');
+        setEmail('');
+        onClose();
+      }, 2000);
+    }, 1500);
+  };
 
   return (
     <motion.form
@@ -121,9 +121,9 @@ export const MessageForm = ({ onClose }: MessageFormProps) => {
             Sent Successfully!
           </span>
         ) : (
-          "Send Message"
+          'Send Message'
         )}
       </motion.button>
     </motion.form>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect } from 'react';
 
@@ -25,7 +25,7 @@ export const useScrollToSection = () => {
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     };

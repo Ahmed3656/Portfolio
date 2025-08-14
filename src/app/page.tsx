@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Hero, Projects, Skills, useScrollToSection } from '@/components';
 
 export default function Home() {

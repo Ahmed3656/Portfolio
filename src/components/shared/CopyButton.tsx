@@ -1,32 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { IconCheck, IconCopy, IconSparkles } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
-import { IconCopy, IconCheck, IconSparkles } from '@tabler/icons-react';
 
 interface CopyButtonProps {
-  textToCopy: string
-  isCopied: boolean
-  onCopy: () => void
+  textToCopy: string;
+  isCopied: boolean;
+  onCopy: () => void;
 }
 
 export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) => {
-  const [sparklePosition, setSparklePosition] = useState({ x: 0, y: 0 })
-  const [showSparkle, setShowSparkle] = useState(false)
+  const [sparklePosition, setSparklePosition] = useState({ x: 0, y: 0 });
+  const [showSparkle, setShowSparkle] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(textToCopy)
-    onCopy()
+    navigator.clipboard.writeText(textToCopy);
+    onCopy();
 
-    const x = Math.random() * 100 - 50
-    const y = Math.random() * 100 - 50
-    setSparklePosition({ x, y })
-    setShowSparkle(true)
+    const x = Math.random() * 100 - 50;
+    const y = Math.random() * 100 - 50;
+    setSparklePosition({ x, y });
+    setShowSparkle(true);
 
     setTimeout(() => {
-      setShowSparkle(false)
-    }, 2000)
-  }
+      setShowSparkle(false);
+    }, 2000);
+  };
 
   const sparkleVariants = {
     hidden: { scale: 0, opacity: 0 },
@@ -35,7 +35,7 @@ export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) =>
       opacity: [0, 1, 1, 0],
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   return (
     <motion.button
@@ -52,7 +52,7 @@ export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) =>
           style={{
             x: sparklePosition.x,
             y: sparklePosition.y,
-            pointerEvents: "none",
+            pointerEvents: 'none',
           }}
           variants={sparkleVariants}
           initial="hidden"
@@ -62,5 +62,5 @@ export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) =>
         </motion.div>
       )}
     </motion.button>
-  )
-}
+  );
+};

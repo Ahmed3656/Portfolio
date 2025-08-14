@@ -1,8 +1,7 @@
 import React from 'react';
+import { FaLocationArrow } from 'react-icons/fa6';
 
 import { HeroHighlight, MagicButton, TextGenerateEffect, TypeWriter } from '@/components';
-
-import { FaLocationArrow } from 'react-icons/fa6';
 import { pos } from '@/constants';
 
 export const Hero = () => {
@@ -25,11 +24,7 @@ export const Hero = () => {
             </p>
 
             <a href="#projects">
-              <MagicButton
-                title="Check out my work"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
+              <MagicButton title="Check out my work" icon={<FaLocationArrow />} position="right" />
             </a>
           </div>
         </div>

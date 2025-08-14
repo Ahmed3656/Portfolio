@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
-  textContent: string [];
+  textContent: string[];
   className?: string;
 };
 
-export const TypeWriter = ({textContent, className}: Props) => {
+export const TypeWriter = ({ textContent, className }: Props) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -45,8 +45,7 @@ export const TypeWriter = ({textContent, className}: Props) => {
     }
 
     setTimeout(type, 2000);
-
   }, [isClient]);
 
-  return <span id="dynamic-text"className={className}></span>;
+  return <span id="dynamic-text" className={className}></span>;
 };

@@ -1,11 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import React from 'react';
 import { IconX } from '@tabler/icons-react';
+import { motion } from 'framer-motion';
 
 interface ModalHeaderProps {
-  title: string
-  onClose: () => void
+  title: string;
+  onClose: () => void;
 }
 
 export const ModalHeader = ({ title, onClose }: ModalHeaderProps) => {
@@ -28,5 +29,5 @@ export const ModalHeader = ({ title, onClose }: ModalHeaderProps) => {
         <IconX size={20} />
       </motion.button>
     </div>
-  )
-}
+  );
+};

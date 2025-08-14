@@ -8,5 +8,5 @@ export const Projects = () => {
     <div id="projects">
       <FocusCards cards={projects} />
     </div>
-  )
-}
+  );
+};

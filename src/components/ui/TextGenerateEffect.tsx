@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { motion, stagger, useAnimate } from 'framer-motion';
+
 import { clx } from '@/utils';
 
 type Props = {
@@ -9,22 +10,22 @@ type Props = {
   className?: string;
   filter?: boolean;
   duration?: number;
-}
+};
 
 export const TextGenerateEffect = ({ words, className, filter = true, duration = 0.5 }: Props) => {
   const [scope, animate] = useAnimate();
-  const wordsArray = words.split(" ");
+  const wordsArray = words.split(' ');
   useEffect(() => {
     animate(
-      "span",
+      'span',
       {
         opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
+        filter: filter ? 'blur(0px)' : 'none',
       },
       {
         duration: duration ? duration : 1,
         delay: stagger(0.2),
-      }
+      },
     );
   }, [scope.current]);
 
@@ -37,10 +38,10 @@ export const TextGenerateEffect = ({ words, className, filter = true, duration =
               key={word + idx}
               className="dark:text-white text-black opacity-0"
               style={{
-                filter: filter ? "blur(10px)" : "none",
+                filter: filter ? 'blur(10px)' : 'none',
               }}
             >
-              {word}{" "}
+              {word}{' '}
             </motion.span>
           );
         })}
@@ -51,7 +52,7 @@ export const TextGenerateEffect = ({ words, className, filter = true, duration =
   return (
     <div className="font-bold">
       <div className="mt-4">
-        <div className={clx(" dark:text-white text-black text-2xl leading-snug tracking-wide", className)}>
+        <div className={clx(' dark:text-white text-black text-2xl leading-snug tracking-wide', className)}>
           {renderWords()}
         </div>
       </div>

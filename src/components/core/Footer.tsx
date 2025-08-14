@@ -1,19 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { footerLinks } from '@/constants';
+
 import { ContactModal } from '@/components';
+import { footerLinks } from '@/constants';
 
 export const Footer = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const [buttonHovered, setButtonHovered] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [buttonHovered, setButtonHovered] = useState(false);
 
   return (
     <footer id="get-in-touch" className="relative w-full border-t border-white/10 overflow-hidden bg-black-100 mt-8">
       <div className="absolute inset-0">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="h-full w-full bg-black-100" style={{ backgroundSize: "100% 100%" }} />
+          <div className="h-full w-full bg-black-100" style={{ backgroundSize: '100% 100%' }} />
         </div>
 
         <div className="absolute left-0 top-0 h-[20rem] w-[20rem] animate-third opacity-10">
@@ -122,7 +123,7 @@ export const Footer = () => {
                       }}
                       transition={{
                         duration: Math.random() * 0.8 + 0.5,
-                        ease: "easeOut",
+                        ease: 'easeOut',
                         delay: i * 0.1,
                       }}
                     />
@@ -135,8 +136,8 @@ export const Footer = () => {
                 transition={
                   buttonHovered
                     ? {
-                      y: { repeat: Number.POSITIVE_INFINITY, duration: 1.5, ease: "easeInOut" },
-                    }
+                        y: { repeat: Number.POSITIVE_INFINITY, duration: 1.5, ease: 'easeInOut' },
+                      }
                     : {}
                 }
               >
@@ -161,5 +162,5 @@ export const Footer = () => {
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </footer>
-  )
-}
+  );
+};

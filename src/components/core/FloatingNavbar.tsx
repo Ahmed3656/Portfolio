@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 
-import { useMotionValueEvent, useScroll, motion } from 'framer-motion';
 import { FloatingDock } from '@/components';
 import { links } from '@/constants';
 
-export function FloatingNavbar({ className }: { className?: string; }) {
+export function FloatingNavbar({ className }: { className?: string }) {
   const { scrollYProgress } = useScroll();
 
   const [visible, setVisible] = useState(true);
@@ -16,8 +16,8 @@ export function FloatingNavbar({ className }: { className?: string; }) {
     const handleMouseMove = (e: MouseEvent) => {
       const topAreaHeight = 75;
       const middleAreaWidthPercent = 30;
-      const middleAreaStartX = window.innerWidth * ((100 - middleAreaWidthPercent) / 2) / 100;
-      const middleAreaEndX = window.innerWidth * ((100 + middleAreaWidthPercent) / 2) / 100;
+      const middleAreaStartX = (window.innerWidth * ((100 - middleAreaWidthPercent) / 2)) / 100;
+      const middleAreaEndX = (window.innerWidth * ((100 + middleAreaWidthPercent) / 2)) / 100;
 
       const isInTopArea = e.clientY <= topAreaHeight;
       const isInMiddleArea = e.clientX >= middleAreaStartX && e.clientX <= middleAreaEndX;
@@ -31,8 +31,8 @@ export function FloatingNavbar({ className }: { className?: string; }) {
     };
   }, []);
 
-  useMotionValueEvent(scrollYProgress, "change", (current) => {
-    if (typeof current === "number") {
+  useMotionValueEvent(scrollYProgress, 'change', (current) => {
+    if (typeof current === 'number') {
       const direction = current - scrollYProgress.getPrevious()!;
 
       if (scrollYProgress.get() < 0.05 || mouseAtTop) {
@@ -54,24 +54,18 @@ export function FloatingNavbar({ className }: { className?: string; }) {
   }, [mouseAtTop]);
 
   const rem = [1, 2, 3];
-  const linksSm = links.filter((_, idx)=> !rem.includes(idx));
+  const linksSm = links.filter((_, idx) => !rem.includes(idx));
 
   return (
     <motion.div
-      className={"fixed top-10 w-full center z-50"}
+      className={'fixed top-10 w-full center z-50'}
       initial={{ y: 0 }}
       animate={{ y: visible ? 0 : -100 }}
       transition={{ duration: 0.3 }}
     >
       <div className={className}>
-        <FloatingDock
-          items={links}
-          className="hidden md:flex"
-        />
-        <FloatingDock
-          items={linksSm}
-          className="flex md:hidden"
-        />
+        <FloatingDock items={links} className="hidden md:flex" />
+        <FloatingDock items={linksSm} className="flex md:hidden" />
       </div>
     </motion.div>
   );
