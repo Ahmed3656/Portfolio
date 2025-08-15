@@ -193,6 +193,42 @@ const config = {
               `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" cx="10" cy="10" r="2.5"></circle></svg>`,
             )}")`,
           }),
+
+          'bg-dot-fine': (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" fill="none"><circle fill="${value}" cx="10" cy="10" r="1"></circle></svg>`,
+            )}")`,
+          }),
+
+          'bg-grid': (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}" stroke-width="1"><path d="M0 .5H31.5V32"/></svg>`,
+            )}")`,
+          }),
+
+          'bg-grid-subtle': (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="${value}" stroke-width="0.5" opacity="0.5"><path d="M0 .5H39.5V40"/></svg>`,
+            )}")`,
+          }),
+
+          'bg-cross': (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="${value}" stroke-width="0.5" opacity="0.3"><path d="M0 10h20M10 0v20"/></svg>`,
+            )}")`,
+          }),
+
+          'bg-diagonal': (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="${value}" stroke-width="0.5" opacity="0.4"><path d="M0 20L20 0M-5 5L5 -5M15 25L25 15"/></svg>`,
+            )}")`,
+          }),
+
+          'bg-mesh': (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="${value}" stroke-width="0.3" opacity="0.4"><defs><pattern id="mesh" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20"/></pattern></defs><rect width="100%" height="100%" fill="url(#mesh)"/></svg>`,
+            )}")`,
+          }),
         },
         { values: flattenColorPalette(theme('backgroundColor')), type: 'color' },
       );

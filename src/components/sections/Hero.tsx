@@ -7,7 +7,7 @@ import { pos } from '@/constants';
 export const Hero = () => {
   return (
     <div id="home" className="overflow-hidden">
-      <HeroHighlight containerClassName="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2] center">
+      <HeroHighlight containerClassName="h-screen w-full dark:bg-black-100 bg-white center">
         <div className="flex justify-center relative my-20 z-10">
           <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[70vw] flex flex-col items-center justify-center">
             <p className="uppercase tracking-widest text-xs text-center text-blue-100">
@@ -23,9 +23,7 @@ export const Hero = () => {
               Hi! I&apos;m Ahmed, a <TypeWriter textContent={pos} className="whitespace-nowrap" />
             </p>
 
-            <a href="#projects">
-              <MagicButton title="Check out my work" icon={<FaLocationArrow />} position="right" />
-            </a>
+            <MagicButton title="Check out my work" href="#projects" icon={<FaLocationArrow />} position="right" />
           </div>
         </div>
       </HeroHighlight>

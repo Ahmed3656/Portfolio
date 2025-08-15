@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Grid, SkillsItem } from '@/components';
-import { Card } from '@/components/ui/Card';
+import { Card, Grid, SkillsItem } from '@/components';
 
 type SkillsCategory = {
   name: string;

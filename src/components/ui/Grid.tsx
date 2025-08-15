@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { containerVariants } from '@/constants';
 
-interface GridProps {
+type GridProps = {
   children: ReactNode;
   columns?: {
     default?: number;
@@ -14,20 +14,18 @@ interface GridProps {
   };
   gap?: number;
   className?: string;
-}
+};
 
 export const Grid = ({ children, columns = { default: 1, md: 3 }, gap = 8, className = '' }: GridProps) => {
   const getGridClasses = () => {
     const { default: def, sm, md, lg, xl } = columns;
     let classes = 'grid';
 
-    // Add gap
     if (gap === 4) classes += ' gap-4';
     else if (gap === 6) classes += ' gap-6';
     else if (gap === 8) classes += ' gap-8';
     else classes += ` gap-${gap}`;
 
-    // Add column classes
     if (def === 1) classes += ' grid-cols-1';
     else if (def === 2) classes += ' grid-cols-2';
     else if (def === 3) classes += ' grid-cols-3';

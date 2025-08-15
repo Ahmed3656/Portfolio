@@ -6,7 +6,7 @@ type ItemProps = {
   delay?: number;
   hoverGradient?: string;
   className?: string;
-  rounded?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  rounded?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   padding?: string;
   showHoverEffect?: boolean;
   hoverScale?: number;

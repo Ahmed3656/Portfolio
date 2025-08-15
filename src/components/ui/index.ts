@@ -1,5 +1,5 @@
+export * from './Card';
 export * from './FloatingDock';
-export * from './FocusCards';
 export * from './Grid';
 export * from './Header';
 export * from './HeroHighlight';

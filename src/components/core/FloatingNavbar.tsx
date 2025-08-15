@@ -58,7 +58,10 @@ export function FloatingNavbar({ className }: { className?: string }) {
 
   return (
     <motion.div
-      className={'fixed top-10 w-full center z-50'}
+      className={'fixed top-10 left-1/2 z-50'}
+      style={{
+        x: '-50%',
+      }}
       initial={{ y: 0 }}
       animate={{ y: visible ? 0 : -100 }}
       transition={{ duration: 0.3 }}
