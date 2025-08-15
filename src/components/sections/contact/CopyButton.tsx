@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { IconCheck, IconCopy, IconSparkles } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
+import { IconButton } from '@/components';
+
 type CopyButtonProps = {
   textToCopy: string;
   isCopied: boolean;
@@ -38,13 +40,12 @@ export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) =>
   };
 
   return (
-    <motion.button
-      onClick={handleCopy}
-      className="relative rounded-full p-1.5 text-white/70 hover:bg-white/10 hover:text-white transition-colors"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-    >
-      {isCopied ? <IconCheck size={18} className="text-green-400" /> : <IconCopy size={18} />}
+    <div className="relative">
+      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <IconButton onClick={handleCopy} className="text-white/70 hover:bg-white/10 hover:text-white">
+          {isCopied ? <IconCheck size={18} className="text-green-400" /> : <IconCopy size={18} />}
+        </IconButton>
+      </motion.div>
 
       {showSparkle && isCopied && (
         <motion.div
@@ -61,6 +62,6 @@ export const CopyButton = ({ textToCopy, isCopied, onCopy }: CopyButtonProps) =>
           <IconSparkles className="text-yellow-300" size={24} />
         </motion.div>
       )}
-    </motion.button>
+    </div>
   );
 };

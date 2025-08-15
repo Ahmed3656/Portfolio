@@ -5,9 +5,9 @@ import React from 'react';
 import { ProjectCard } from '@/components';
 import { Project, projects } from '@/constants';
 
-interface ProjectsGridProps {
+type ProjectsGridProps = {
   priorityThreshold?: number;
-}
+};
 
 export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ priorityThreshold = 2 }) => {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
