@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { tabVariants } from '@/variants';
 import { motion } from 'framer-motion';
 
 type TabNavigationProps = {
@@ -9,11 +10,6 @@ type TabNavigationProps = {
 };
 
 export const TabNavigation = ({ activeTab, onTabChange }: TabNavigationProps) => {
-  const tabVariants = {
-    active: { color: '#ffffff', opacity: 1 },
-    inactive: { color: '#ffffff99', opacity: 0.7 },
-  };
-
   return (
     <div className="flex border-b border-white/10">
       <motion.button

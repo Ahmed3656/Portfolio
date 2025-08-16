@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -94,31 +93,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             >
               {project.title}
             </motion.h3>
-
-            {/* Preview Button */}
-            <motion.button
-              className="group/btn relative flex-shrink-0"
-              animate={{ y: isHovered ? -5 : 0 }}
-              transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {/* Button background with glassmorphism */}
-              <div className="absolute inset-0 w-11 h-11 bg-white/10 backdrop-blur-md rounded-full border border-[#aaaaaa] transition-all duration-300 group-hover/btn:bg-white/20 group-hover/btn:border-white/40" />
-
-              {/* Icon container */}
-              <div className="relative w-11 h-11 flex items-center justify-center text-white transition-all duration-300 group-hover/btn:text-white">
-                <FaExternalLinkAlt
-                  className="w-5 h-5 transition-transform duration-300 group-hover/btn:rotate-12 group-hover/btn:scale-110"
-                  style={{
-                    filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.8))',
-                  }}
-                />
-              </div>
-
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 w-11 h-11 rounded-full bg-white/20 scale-0 group-hover/btn:scale-100 transition-transform duration-300 blur-md" />
-            </motion.button>
           </div>
 
           <div>

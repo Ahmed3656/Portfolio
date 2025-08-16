@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
+import { containerVariants } from '@/variants';
 import { motion } from 'framer-motion';
-
-import { containerVariants } from '@/constants';
 
 type GridProps = {
   children: ReactNode;

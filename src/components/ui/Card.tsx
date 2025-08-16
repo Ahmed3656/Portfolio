@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
+import { itemVariants } from '@/variants';
 import { motion } from 'framer-motion';
-
-import { itemVariants } from '@/constants';
 
 type CardProps = {
   children: ReactNode;

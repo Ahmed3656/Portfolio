@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { modalVariants } from '@/variants';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { ConnectOptions, MessageForm, ModalHeader, TabNavigation } from '@/components';
@@ -29,32 +30,6 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, onClose]);
-
-  const modalVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        damping: 25,
-        stiffness: 300,
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.8,
-      y: 20,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
 
   return (
     <AnimatePresence>

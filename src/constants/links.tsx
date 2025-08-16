@@ -19,7 +19,7 @@ export const links = [
   {
     title: 'Experience',
     icon: <IconBriefcase2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-    href: '#',
+    href: '#experience',
   },
   {
     title: 'Skills',
