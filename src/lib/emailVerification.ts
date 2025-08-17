@@ -1,5 +1,5 @@
 export class EmailVerification {
-  private static ABSTRACT_API_KEY = process.env.NEXT_PUBLIC_ABSTRACT_API_KEY;
+  private static ABSTRACT_API_KEY = process.env.ABSTRACT_API_KEY;
 
   public static async verifyEmail(email: string): Promise<{
     isValid: boolean;
