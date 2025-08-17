@@ -6,7 +6,7 @@ export const experiences: ExperienceItem[] = [
     title: 'Software Developer, Intern',
     company: 'IST Networks',
     location: 'Cairo, Egypt',
-    duration: 'Sep 2025 - Present',
+    duration: 'Jul 2025 - Present',
     description:
       'Contributing to both Web and App Development teams within a leading Customer Experience (CX) tech company, delivering scalable and integrated solutions.',
     responsibilities: [

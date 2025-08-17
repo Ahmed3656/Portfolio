@@ -10,5 +10,5 @@ type ContactOption = {
 export const contactOptions: ContactOption[] = [
   { label: 'Email', value: 'ahmedamr4f@gmail.com', icon: <IconMailFilled size={18} /> },
   { label: 'X', value: '@Ahmed3656_', icon: <IconBrandX size={18} /> },
-  { label: 'Discord', value: 'Ahmed3656', icon: <IconBrandDiscordFilled size={18} /> },
+  { label: 'Discord', value: '2hmed3mr', icon: <IconBrandDiscordFilled size={18} /> },
 ];

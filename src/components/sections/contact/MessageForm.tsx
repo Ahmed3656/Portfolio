@@ -1,72 +1,107 @@
 'use client';
 
 import React, { useState } from 'react';
-import { IconCheck } from '@tabler/icons-react';
+import { FaPaperPlane, FaShieldAlt, FaSpinner } from 'react-icons/fa';
+import { ContactFormData } from '@/types';
 import { motion } from 'framer-motion';
+
+import { useToastHelpers } from '@/components';
+import { ContentFilter, EmailService } from '@/lib';
 
 type MessageFormProps = {
   onClose: () => void;
 };
 
-export const MessageForm = ({ onClose }: MessageFormProps) => {
-  const [message, setMessage] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+export const MessageForm: React.FC<MessageFormProps> = ({ onClose }) => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    message: '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const { success, danger, info } = useToastHelpers();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
+    try {
+      info('Verifying...', 'Checking email address and content');
+
+      // Content filtering with email verification
+      const filterResult = await ContentFilter.filterContent(formData);
+
+      if (!filterResult.isValid) {
+        danger('Message Blocked', filterResult.reason || 'Content validation failed');
+        setIsSubmitting(false);
+        return;
+      }
+
+      info('Sending...', 'Your message is being sent securely');
+      await EmailService.sendEmail(formData);
+
+      success('Message Sent!', "Thank you! I'll get back to you within 24 hours.");
 
       setTimeout(() => {
-        setIsSuccess(false);
-        setMessage('');
-        setName('');
-        setEmail('');
+        setFormData({ name: '', email: '', message: '' });
         onClose();
       }, 2000);
-    }, 1500);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      danger('Failed to Send', 'Please try again later or contact me directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="space-y-4"
-      initial={{ opacity: 0, y: 10 }}
+      className="space-y-6"
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
     >
+      {/* Content Filter Notice */}
+      <div className="flex items-center space-x-2 text-sm text-white-100">
+        <FaShieldAlt className="w-4" />
+        <span>Messages are filtered for spam and inappropriate content</span>
+      </div>
+
       <div className="space-y-2">
         <label htmlFor="name" className="block text-sm font-medium text-white">
-          Name
+          Name *
         </label>
         <input
           type="text"
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/50 focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20"
-          placeholder="Your name"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          className="w-full rounded-lg border border-white/10 bg-black-300 px-4 py-3 text-white placeholder-white-100 focus:border-purple/50 focus:outline-none focus:ring-2 focus:ring-purple/20 transition-all backdrop-blur-sm"
+          placeholder="Your full name"
           required
+          maxLength={100}
         />
       </div>
 
       <div className="space-y-2">
         <label htmlFor="email" className="block text-sm font-medium text-white">
-          Email
+          Email *
         </label>
         <input
           type="email"
           id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/50 focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className="w-full rounded-lg border border-white/10 bg-black-300 px-4 py-3 text-white placeholder-white-100 focus:border-purple/50 focus:outline-none focus:ring-2 focus:ring-purple/20 transition-all backdrop-blur-sm"
           placeholder="your.email@example.com"
           required
         />
@@ -74,54 +109,52 @@ export const MessageForm = ({ onClose }: MessageFormProps) => {
 
       <div className="space-y-2">
         <label htmlFor="message" className="block text-sm font-medium text-white">
-          Message
+          Message *
         </label>
-        <textarea
-          id="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          rows={4}
-          className="w-full max-h-40 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/50 focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20"
-          placeholder="Tell me about your project..."
-          required
-        />
+        <div className="relative">
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleInputChange}
+            rows={5}
+            className="w-full rounded-lg border border-white/10 bg-black-300 px-4 py-3 text-white placeholder-white-100 focus:border-purple/50 focus:outline-none focus:ring-2 focus:ring-purple/20 transition-all resize-none backdrop-blur-sm"
+            placeholder="Tell me about your project, question, or how I can help you..."
+            required
+            minLength={10}
+            maxLength={5000}
+          />
+          <div className="absolute bottom-2 right-2 text-xs text-white-100">{formData.message.length}/5000</div>
+        </div>
       </div>
 
       <motion.button
         type="submit"
-        className="relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-purple/80 to-blue-100/80 px-4 py-2 font-medium text-white shadow-lg hover:from-purple hover:to-blue-100 transition-all duration-300"
+        className="relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-purple to-blue-100 px-6 py-3 font-semibold text-black shadow-lg hover:shadow-purple/25 focus:outline-none focus:ring-2 focus:ring-purple/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        disabled={isSubmitting || isSuccess}
+        disabled={isSubmitting}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-1000" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-1000" />
 
-        {isSubmitting ? (
-          <span className="flex items-center justify-center">
-            <svg
-              className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            Sending...
-          </span>
-        ) : isSuccess ? (
-          <span className="flex items-center justify-center">
-            <IconCheck className="mr-2 h-4 w-4" />
-            Sent Successfully!
-          </span>
-        ) : (
-          'Send Message'
-        )}
+        <span className="relative flex items-center justify-center">
+          {isSubmitting ? (
+            <>
+              <FaSpinner className="mr-2 h-4 w-4 animate-spin" />
+              Sending Message...
+            </>
+          ) : (
+            <>
+              <FaPaperPlane className="mr-2 h-4 w-4" />
+              Send Message
+            </>
+          )}
+        </span>
       </motion.button>
+
+      <p className="text-xs text-white-100 text-center">
+        Your message will be sent securely. I typically respond within 24 hours.
+      </p>
     </motion.form>
   );
 };

@@ -5,3 +5,4 @@ export * from './Header';
 export * from './IconButton';
 export * from './Item';
 export * from './MagicButton';
+export * from './Toast';
