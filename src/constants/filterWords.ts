@@ -41,7 +41,6 @@ export const badWords = [
 export const suspiciousPatterns = [
   /\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b/, // Credit card patterns
   /\b\d{3}[-.]?\d{2}[-.]?\d{4}\b/, // SSN patterns
-  /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i, // Extra email addresses inside body
   /bitcoin|crypto|investment|forex|trading|roi|profit|millionaire/gi, // Crypto/Money spam
   /click\s+here|download\s+now|act\s+fast/gi, // Suspicious CTAs
   /(http|https):\/\/[^\s]+/gi, // URLs
