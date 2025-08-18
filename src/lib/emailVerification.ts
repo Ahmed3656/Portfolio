@@ -7,14 +7,12 @@ export class EmailVerification {
     suggestion?: string;
     reason?: string;
   }> {
-    if (!this.ABSTRACT_API_KEY) {
-      throw new Error('AbstractAPI key not configured');
-    }
-
     try {
-      const response = await fetch(
-        `https://emailvalidation.abstractapi.com/v1/?api_key=${this.ABSTRACT_API_KEY}&email=${encodeURIComponent(email)}`,
-      );
+      const response = await fetch('/api/verify-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
 
       if (!response.ok) {
         throw new Error(`API request failed: ${response.status}`);
