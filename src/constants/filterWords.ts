@@ -2,8 +2,6 @@ export const badWords = [
   'spam',
   'scam',
   'fraud',
-  'hack',
-  'hacker',
   'malware',
   'virus',
   'phishing',
@@ -31,11 +29,17 @@ export const badWords = [
   'easy money',
   'viagra',
   'cialis',
-  'crypto',
   'forex',
-  'investment',
   'loan',
   'credit repair',
+  'easy hacking',
+  'hack your account',
+  'get rich crypto',
+  'crypto investment opportunity',
+  'guaranteed investment',
+  'investment returns',
+  'trading signals',
+  'forex profits',
 ];
 
 export const suspiciousPatterns = [

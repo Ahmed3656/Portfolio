@@ -47,6 +47,6 @@ export const skillCategories = [
   },
   {
     name: 'Tools',
-    skills: ['Git', 'Linux', 'Docker'],
+    skills: ['Git', 'Linux', 'Docker', 'Kubernetes'],
   },
 ];
